@@ -50,6 +50,9 @@ class TestMovement(TestCharacter):
         self.char.move_forward()
         self.validate_position(self.char.position, Position(5, 5, 3))
 
+class TestDeath(TestCharacter):
+    def test_being_killed(self):
+        raise Exception('Test not implemented yet')
 
 if __name__ == '__main__':
     unittest.main()

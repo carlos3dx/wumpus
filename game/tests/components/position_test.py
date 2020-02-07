@@ -6,6 +6,7 @@ from game.components.position import Position
 class TestPosition(unittest.TestCase):
     def setUp(self):
         self.obj = Position(1, 2, 2)
+        print("Hola\n")
 
 
 class TestConstructor(TestPosition):

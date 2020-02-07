@@ -6,3 +6,12 @@ class Character:
         self.position = Position(pos_x, pos_y, orientation)
         self.name = name
 
+    def turn_left(self):
+        self.position.turn_left()
+        
+    def turn_right(self):
+        self.position.turn_right()
+        
+    def move_forward(self):
+        self.position.move_forward()
+        
