@@ -39,20 +39,20 @@ def set_pits(board, max_x, max_y, pits):
         while cell.object is not None or cell.id == "0x0":
             cell = get_random_cell(board, max_x, max_y)
         cell.object = Object.PIT
-        set_perception_pit(board, cell, max_x, max_y)
+        set_perception_near(board, cell, max_x, max_y, Perception.BREEZE)
 
 
-def set_perception_pit(board, cell, max_x, max_y):
+def set_perception_near(board, cell, max_x, max_y, perception):
     x, y = [int(val) for val in cell.id.split("x")]
     for i in [x - 1, x + 1]:
-        set_breeze(board, i, y, max_x, max_y)
+        set_perception(board, i, y, max_x, max_y, perception)
     for j in [y - 1, y + 1]:
-        set_breeze(board, x, j, max_x, max_y)
+        set_perception(board, x, j, max_x, max_y, perception)
 
 
-def set_breeze(board, x, y, max_x, max_y):
+def set_perception(board, x, y, max_x, max_y, perception):
     if x in range(max_x) and y in range(max_y):
-        board.cells[x][y].add_perception(Perception.BREEZE)
+        board.cells[x][y].add_perception(perception)
 
 
 def set_gold_bar(board, max_x, max_y):
@@ -69,3 +69,7 @@ def set_wumpus_location(board, max_x, max_y, wumpus):
         cell = get_random_cell(board, max_x, max_y)
     x, y = [int(val) for val in cell.id.split("x")]
     wumpus.set_position(x, y, randint(0, 3))
+    cell.add_perception(Perception.WUMPUS)
+    set_perception_near(board, cell, max_x, max_y, Perception.WUMPUS_ODOR)
+
+

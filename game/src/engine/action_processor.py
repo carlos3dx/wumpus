@@ -10,7 +10,8 @@ class ActionProcessor:
     p_shoot = re.compile(r'^shoot$|^(shoot|throw) arrow$')
     p_exit = re.compile(r'^exit( (board|game))?$|^go outside$')
 
-    def process_command(self, text):
+    def process_command(self, command):
+        text = command.lower()
         if re.match(self.p_move, text):
             action = Actions.MOVE
         elif re.match(self.p_turn_left, text):

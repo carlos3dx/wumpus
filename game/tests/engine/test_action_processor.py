@@ -10,7 +10,7 @@ class TestActionProcessor(unittest.TestCase):
 
 
 class TestMovement(TestActionProcessor):
-    ok_commands = ["move", "move forward", "move forwards"]
+    ok_commands = ["move", "move forward", "move forwards", "MOVE", "MOVE FORWARD", "MOVE FORWARDS"]
     nok_commands = ["forward move", "move backwards", "move_forward", "nonsense"]
 
     def test_move_ok(self):
@@ -23,8 +23,8 @@ class TestMovement(TestActionProcessor):
 
 
 class TestTurn(TestActionProcessor):
-    ok_commands_left = ["turn left", "left turn"]
-    ok_commands_right = ["turn right", "right turn"]
+    ok_commands_left = ["turn left", "left turn", "TURN LEFT", "LEFT TURN"]
+    ok_commands_right = ["turn right", "right turn", "TURN RIGHT", "RIGHT TURN"]
     nok_commands = ["turn", "right left turn", "right turn right", "turn up", "turn down", "turn left turn"]
 
     def test_turn_left(self):
@@ -43,7 +43,7 @@ class TestTurn(TestActionProcessor):
 
 
 class TestShoot(TestActionProcessor):
-    ok_commands = ["shoot", "shoot arrow", "throw arrow"]
+    ok_commands = ["shoot", "shoot arrow", "throw arrow", "SHOOT", "SHOOT ARROW", "THROW ARROW"]
     nok_commands = ["throw", "shoot throw", "throw shoot", "throw shoot arrow", "kill"]
 
     def test_shoot_ok(self):
@@ -56,7 +56,7 @@ class TestShoot(TestActionProcessor):
 
 
 class TestExit(TestActionProcessor):
-    ok_commands = ["exit", "exit board", "exit game", "go outside"]
+    ok_commands = ["exit", "exit board", "exit game", "go outside", "EXIT", "EXIT BOARD", "EXIT GAME", "GO OUTSIDE"]
     nok_commands = ["exit nonsense", "go inside", "exit outside"]
 
     def test_exit_ok(self):
