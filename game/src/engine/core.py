@@ -1,19 +1,19 @@
 from game.src.components.game import Game
 from game.src.components.playable_character import PlayableCharacter
+from game.src.components.position import Position
 from game.src.components.wumpus import Wumpus
 from game.src.engine.action_processor import process_actions_player
 from game.src.engine.board_utils import create_board, refresh_board, check_pit
 from game.src.engine.interface import request_action, print_board
-from game.src.components.position import Position
 from game.src.engine.perceptions_processor import evaluate_perceptions
 
 
 def play(cols, rows, pits, arrows, debug):
-    game = setUp(cols, rows, pits, arrows)
+    game = set_up(cols, rows, pits, arrows)
     core(game, debug)
 
 
-def setUp(cols, rows, pits, arrows):
+def set_up(cols, rows, pits, arrows):
     player = PlayableCharacter(arrows=arrows)
     wumpus = Wumpus()
     board = create_board(cols, rows, pits, wumpus)

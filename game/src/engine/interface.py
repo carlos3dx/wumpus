@@ -24,7 +24,7 @@ def print_board(game):
     else:
         w_col = game.wumpus.position.x
         w_row = game.wumpus.position.y
-    for i in range(len(cells)-1, -1, -1):
+    for i in range(len(cells) - 1, -1, -1):
         row = cells[i]
         chars = []
         for j in range(len(row)):

@@ -62,9 +62,10 @@ def check_exit(game):
             print("Congratulations, you managed to kill the Wumpus, collect the gold and getting out.")
         elif gold:
             print(
-                "Congratulations, you managed to collect the gold and getting out without risking your life with the Wumpus.")
+                "Congratulations, you managed to collect the gold and getting out without "
+                "risking your life with the Wumpus.")
         elif wumpus:
-            print("Contratulations hunter, you killed the Wumpus and returned to your home.")
+            print("Congratulations hunter, you killed the Wumpus and returned to your home.")
         else:
             print("You returned home without the gold or the Wumpus head")
         exit(0)
