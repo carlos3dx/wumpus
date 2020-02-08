@@ -11,20 +11,20 @@ def process_shoot(game: Game, arrow: Arrow):
     refresh = False
     if arrow is not None and game.wumpus is not None:
         print("An arrow was shoot from your bow")
-        w_x = game.wumpus.position.x
-        w_y = game.wumpus.position.y
-        p_x = game.player.position.x
-        p_y = game.player.position.y
+        w_col = game.wumpus.position.x
+        w_row = game.wumpus.position.y
+        p_col = game.player.position.x
+        p_row = game.player.position.y
 
-        # check oorientation from player to wumpus
-        if p_x == w_x or p_y == w_y:
-            if p_x == w_x:
-                if p_y > w_y:
+        # check orientation from player to wumpus
+        if p_col == w_col or p_row == w_row:
+            if p_col == w_col:
+                if p_row > w_row:
                     relative_position = 2
                 else:
                     relative_position = 0
             else:
-                if p_x > w_x:
+                if p_col > w_col:
                     relative_position = 3
                 else:
                     relative_position = 1
@@ -33,13 +33,17 @@ def process_shoot(game: Game, arrow: Arrow):
                 game.player.kill_wumpus()
                 game.wumpus = None
                 refresh = True
+    elif arrow is not None:
+        print("An arrow was shoot from your bow, but there is nothing more to kill")
+    else:
+        print("You have no arrows left")
     return refresh
 
 
 def move(character: Character, board: Board):
     pos = deepcopy(character.position)
     pos.move_forward()
-    if len(board.cells) <= pos.y and len(board.cells[0]) <= pos.x:
+    if len(board.cells) <= pos.y or len(board.cells[0]) <= pos.x or pos.y < 0 or pos.x < 0:
         print("Cannot move through walls")
         refresh = False
     else:
@@ -82,4 +86,3 @@ def process_actions_player(game: Game, action: Actions):
     elif action == Actions.EXIT:
         check_exit(game)
     return refresh
-

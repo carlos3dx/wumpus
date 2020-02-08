@@ -16,22 +16,22 @@ def request_action():
 
 def print_board(game):
     cells = game.board.cells
-    p_x = game.player.position.x
-    p_y = game.player.position.y
+    p_col = game.player.position.x
+    p_row = game.player.position.y
     if game.wumpus is None:
-        w_x = -1
-        w_y = -1
+        w_col = -1
+        w_row = -1
     else:
-        w_x = game.wumpus.position.x
-        w_y = game.wumpus.position.y
+        w_col = game.wumpus.position.x
+        w_row = game.wumpus.position.y
     for i in range(len(cells)-1, -1, -1):
         row = cells[i]
         chars = []
         for j in range(len(row)):
             cell = row[j]
-            if p_x == j and p_y == i:
+            if p_col == j and p_row == i:
                 char = "P"
-            elif w_x == j and w_y == i:
+            elif w_col == j and w_row == i:
                 char = "W"
             elif cell.object == Object.GOLD:
                 char = "G"
