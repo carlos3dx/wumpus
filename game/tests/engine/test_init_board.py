@@ -2,7 +2,7 @@ import unittest
 
 from game.src.components.enumerations import Perception, Object
 from game.src.components.wumpus import Wumpus
-from game.src.engine.init_board import create_board
+from game.src.engine.board_utils import create_board
 
 rows = 8
 cols = 5

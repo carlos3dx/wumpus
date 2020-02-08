@@ -1,12 +1,12 @@
 import unittest
 
 from game.src.components.enumerations import Actions
-from game.src.engine.action_processor import ActionProcessor
+from game.src.engine.command_processor import CommandProcessor
 
 
 class TestActionProcessor(unittest.TestCase):
     def setUp(self):
-        self.processor = ActionProcessor()
+        self.processor = CommandProcessor()
 
 
 class TestMovement(TestActionProcessor):
