@@ -12,3 +12,11 @@ class Perception(Enum):
     GOLD = auto()
     BREEZE = auto()
     WALL = auto()
+
+
+class Actions(Enum):
+    MOVE = auto()
+    TURN_LEFT = auto()
+    TURN_RIGHT = auto()
+    SHOOT = auto()
+    EXIT = auto()
