@@ -1,12 +1,11 @@
 import unittest
 
-from game.components.position import Position
+from game.src.components.position import Position
 
 
 class TestPosition(unittest.TestCase):
     def setUp(self):
         self.obj = Position(1, 2, 2)
-        print("Hola\n")
 
 
 class TestConstructor(TestPosition):
@@ -41,7 +40,7 @@ class TestMovement(TestPosition):
         self.validate_position(pos, Position(6, 6, 1))
         pos.turn_right()
         pos.move_forward()
-        self.validate_position(pos, Position(5, 6, 2))
+        self.validate_position(pos, Position(6, 5, 2))
         pos.turn_right()
         pos.move_forward()
         self.validate_position(pos, Position(5, 5, 3))

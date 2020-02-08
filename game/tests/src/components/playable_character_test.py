@@ -1,6 +1,6 @@
 import unittest
 
-from game.components.playable_character import PlayableCharacter
+from game.src.components.playable_character import PlayableCharacter
 
 
 class TestPlayableCharacter(unittest.TestCase):
@@ -9,27 +9,12 @@ class TestPlayableCharacter(unittest.TestCase):
 
     def test_constructor_default(self):
         self.assertEqual(self.pc.name, "Player")
+        self.assertFalse(self.pc.has_gold)
+        self.assertFalse(self.pc.killed_wumpus)
 
     def test_constructor_arrows(self):
         pc = PlayableCharacter(arrows=10)
         self.assertEqual(pc.arrows, 10)
-
-
-class TestPerceptions(TestPlayableCharacter):
-    def test_nothing(self):
-        raise Exception('Test not implemented yet')
-
-    def test_wumpus(self):
-        raise Exception('Test not implemented yet')
-
-    def test_wumpus_smell(self):
-        raise Exception('Test not implemented yet')
-
-    def test_wall(self):
-        raise Exception('Test not implemented yet')
-
-    def test_wumpus_yell(self):
-        raise Exception('Test not implemented yet')
 
 
 class TestHunting(TestPlayableCharacter):
@@ -46,12 +31,34 @@ class TestHunting(TestPlayableCharacter):
         arrow = self.pc.shoot()
         self.assertIsNone(arrow)
 
+
 class TestExit(TestPlayableCharacter):
     def test_exit_ok(self):
         self.assertTrue(self.pc.exit())
 
-    def test_exit_nok(self):
+    def test_exit_nok_x(self):
+        self.pc.position.x = 9
         self.assertFalse(self.pc.exit())
+
+    def test_exit_nok_y(self):
+        self.pc.position.y = 9
+        self.assertFalse(self.pc.exit())
+
+    def test_exit_nok(self):
+        self.pc.position.x = 9
+        self.pc.position.y = 9
+        self.assertFalse(self.pc.exit())
+
+
+class TestAchievements(TestPlayableCharacter):
+    def test_has_gold(self):
+        self.pc.obtain_gold()
+        self.assertTrue(self.pc.has_gold)
+
+    def test_killed_wumpus(self):
+        self.pc.kill_wumpus()
+        self.assertTrue(self.pc.kill_wumpus, True)
+
 
 if __name__ == '__main__':
     unittest.main()

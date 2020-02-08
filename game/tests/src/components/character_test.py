@@ -1,7 +1,7 @@
 import unittest
 
-from game.components.character import Character
-from game.components.position import Position
+from game.src.components.character import Character
+from game.src.components.position import Position
 
 
 class TestCharacter(unittest.TestCase):
@@ -45,14 +45,11 @@ class TestMovement(TestCharacter):
         self.validate_position(self.char.position, Position(6, 6, 1))
         self.char.turn_right()
         self.char.move_forward()
-        self.validate_position(self.char.position, Position(5, 6, 2))
+        self.validate_position(self.char.position, Position(6, 5, 2))
         self.char.turn_right()
         self.char.move_forward()
         self.validate_position(self.char.position, Position(5, 5, 3))
 
-class TestDeath(TestCharacter):
-    def test_being_killed(self):
-        raise Exception('Test not implemented yet')
 
 if __name__ == '__main__':
     unittest.main()

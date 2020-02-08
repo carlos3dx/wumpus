@@ -1,5 +1,5 @@
 class Position:
-    directions = ["N", "E", "S", "W"]
+    directions = ["north", "east", "south", "west"]
 
     def __init__(self, x, y, orientation):
         self.x = x
@@ -16,4 +16,12 @@ class Position:
         self.turn(1)
 
     def move_forward(self):
-        pass
+        dir = self.orientation
+        if dir == 0:
+            self.y += 1
+        elif dir == 1:
+            self.x += 1
+        elif dir == 2:
+            self.y -= 1
+        else:
+            self.x -= 1
