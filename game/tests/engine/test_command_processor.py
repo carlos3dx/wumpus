@@ -4,12 +4,12 @@ from game.src.components.enumerations import Actions
 from game.src.engine.command_processor import CommandProcessor
 
 
-class TestActionProcessor(unittest.TestCase):
+class TestCommandProcessor(unittest.TestCase):
     def setUp(self):
         self.processor = CommandProcessor()
 
 
-class TestMovement(TestActionProcessor):
+class TestMovement(TestCommandProcessor):
     ok_commands = ["move", "move forward", "move forwards", "MOVE", "MOVE FORWARD", "MOVE FORWARDS"]
     nok_commands = ["forward move", "move backwards", "move_forward", "nonsense"]
 
@@ -22,7 +22,7 @@ class TestMovement(TestActionProcessor):
             self.assertIsNone(self.processor.process_command(x), "'None' should be returned")
 
 
-class TestTurn(TestActionProcessor):
+class TestTurn(TestCommandProcessor):
     ok_commands_left = ["turn left", "left turn", "TURN LEFT", "LEFT TURN"]
     ok_commands_right = ["turn right", "right turn", "TURN RIGHT", "RIGHT TURN"]
     nok_commands = ["turn", "right left turn", "right turn right", "turn up", "turn down", "turn left turn"]
@@ -42,7 +42,7 @@ class TestTurn(TestActionProcessor):
             self.assertIsNone(self.processor.process_command(x), "'None' should be returned")
 
 
-class TestShoot(TestActionProcessor):
+class TestShoot(TestCommandProcessor):
     ok_commands = ["shoot", "shoot arrow", "throw arrow", "SHOOT", "SHOOT ARROW", "THROW ARROW"]
     nok_commands = ["throw", "shoot throw", "throw shoot", "throw shoot arrow", "kill"]
 
@@ -55,7 +55,7 @@ class TestShoot(TestActionProcessor):
             self.assertIsNone(self.processor.process_command(x), "'None' should be returned")
 
 
-class TestExit(TestActionProcessor):
+class TestExit(TestCommandProcessor):
     ok_commands = ["exit", "exit board", "exit game", "go outside", "EXIT", "EXIT BOARD", "EXIT GAME", "GO OUTSIDE"]
     nok_commands = ["exit nonsense", "go inside", "exit outside"]
 
